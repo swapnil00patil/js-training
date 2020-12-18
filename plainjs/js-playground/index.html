@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <title>Critical Path: Script External</title>
+    <script>
+        function measureCRP() {
+          var t = window.performance.timing,
+            interactive = t.domInteractive - t.domLoading,
+            dcl = t.domContentLoadedEventStart - t.domLoading,
+            complete = t.domComplete - t.domLoading;
+          var stats = document.createElement('p');
+          stats.textContent = 'interactive: ' + interactive + 'ms, ' +
+              'domContentLoaded: ' + dcl + 'ms, complete: ' + complete + 'ms';
+          document.body.appendChild(stats);
+        }
+      </script>
+  </head>
+  <body onload="measureCRP()">
+    <p>Hello <span>web performance</span> students!</p>
+    <script src="js/app.js"></script>
+  </body>
+</html>
